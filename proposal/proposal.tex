@@ -1,0 +1,76 @@
+% compile with pdflatex proposal.tex
+
+\documentclass[11pt]{article}
+\usepackage{times,graphicx,epstopdf,fancyhdr,amsfonts,amsthm,amsmath,url,xspace,algorithm,algorithmic,amssymb}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\usepackage{indentfirst, enumitem, tagging, physics}
+\def\endtaggedblock{\endcomment}
+\pagestyle{fancy}
+
+% Comment out for single spacing
+%\baselineskip 20pt
+
+\lhead{Math306-01: Fractals and Chaos - Spring 2018}
+\chead{}
+\rhead{Marcus Hughes}
+\lfoot{Project Proposal}
+\rfoot{7 May 2018} 
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headwidth}{\textwidth}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\section{Motivation and Value} \label{sec:motivation}
+Many natural systems can be described as random walks, a set of time-discrete steps in a given space, or their continuous counterpart, Brownian motion or the Wiener process. There is some work understanding the fractal dimension of these systems outside of simple lattice systems, e.g. on an attractive plane. I will explore these and other configurations computationally and provide approximations of their fractal dimension, specifically for self-attracting walks on fractals. 
+
+\section{Resources} \label{sec:resources}
+Mandelbrot (1982) established the field of fractals including his exploration and conjecturing of the fractal dimension of Brownian motion \cite{mandelbrot82}. In 2001, Lawler, Schramm, and Werner (2000) rigorously confirmed Mandlebrot's (1982) conjecture that a self-avoiding random walk has dimension 4/3 \cite{lawler+01, mandelbrot82}. On the other hand, Lee (1998) explored the dimension of self-attracting walks on regular lattices \cite{lee98}.  Saberi (2011) computationally showed that the fractal dimension of three dimensional Brownian motion on an attractive plane tends to 1.83 as the attractive parameter $\alpha$ goes to infinity  \cite{saberi11}. In this setup, $\alpha \in (1, \infty)$ characterizes how strongly the attractive plane pulls on the Brownian motion where $\alpha = 1$ approximates the random walk on the plane and $\alpha = \infty$ a random attracted walk in three dimensions. 
+
+\section{Plans} \label{sec:plans}
+In my project I plan to do the following things:
+\begin{itemize}
+\item Read and understand the papers mentioned in Section \ref{sec:resources}
+\item Provide a succinct proof of the Minkowski dimension of Brownian/Random walk in dimension $d$
+\item Provide a brief overview of random walks
+\item Produce code for running iterated function systems of affine transformations
+\item Produce code for evaluating the Minkowski dimension of a set of points in $\mathbb{R}^n$
+\item Computationally determine the Minkowski dimension of simple random walks
+\item Attempt to determine the Minkowski dimension of self-attracting random walks on fractals
+\end{itemize}
+
+\begin{thebibliography}{999}
+\bibitem{lawler+01}
+  Gregory Lawler and Oded Schramm and Wendelin Werner,
+  The dimension of the planar brownian fronter is 4/3,
+  \emph{Mathematical Research Letters},
+  \textbf{8},
+  401-411,
+  (2001).
+
+\bibitem{lee98}
+  Jae Woo Lee,
+  Self-attracting walk on lattices,
+  \emph{Journal of Physics A: Mathematical and General},
+  \textbf{31},
+  3929,
+  (1998).
+
+\bibitem{mandelbrot82}
+  Benoit Mandelbrot,
+  \emph{The Fractal Geometry of Nature},
+  Times Books, Updated edition,
+  (1982).
+  
+\bibitem{saberi11}
+  Abbas Ali Saberi,
+  Fractal structure of a three-dimensional Brownian motion on an attractive plane,
+  \emph{Physical Review E},
+  \textbf{84},
+  021113,
+  (2011).
+\end{thebibliography}
+
+
+\end{document}
