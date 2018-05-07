@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[top=1.0in, bottom=1in, left=1.0in, right=1in, includehead]{geometry}
+\pagestyle{headings}
+\usepackage{setspace}
+
+%% Special math fonts and symbols
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{minted}
+
+%% Nice tables and figures
+\usepackage{rotating}
+\usepackage[table]{xcolor}
+
+% nice formattings
+\usepackage{indentfirst}
+
+%% set table width
+\usepackage{array}
+
+%% graphics path
+\graphicspath{{figs/}}
+
+%% nice hyperlinks
+\definecolor{color1}{RGB}{0,0,90} % cite color
+\definecolor{color2}{RGB}{0,20,20} % link color
+\usepackage{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,colorlinks,
+  breaklinks=true,
+  urlcolor=color2,
+  citecolor=color1,
+  linkcolor=color1,
+  bookmarksopen=false,
+  pdftitle={Random walks on Fractals},
+  pdfauthor={J. Marcus Hughes}}
+
+% a todo command
+\newcommand{\todo}[1]{{\color{red}{\textbf{#1}}}}
+
+\usepackage{titling}
+
+\setlength{\droptitle}{-10em}   % This is your set screw
+
+\title{Random Walks on Fractals \thanks{written as a final project for Math 306: Fractals and Chaos Theory at Williams College taught by Cesar Silva}}
+\date{\today}
+\author{J. Marcus Hughes \thanks{\href{mailto:hughes.jmb@gmail.com}{hughes.jmb@gmail.com}}}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+
+\section{Background}
+
+\section{Code Contribution}
+
+\section{Experiments}
+
+\section{Summary}
+
+\bibliographystyle{acm}
+\bibliography{references}
+\end{document}

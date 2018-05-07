@@ -1,3 +1,3 @@
-# reverseboxcounting
+# randomwalks
 
-potential fractals/chaos theory problem in generating a fractal with a specific dimension
+fractals/chaos theory problem for random walks and fractals
