@@ -2,6 +2,7 @@
 \usepackage[top=1.0in, bottom=1in, left=1.0in, right=1in, includehead]{geometry}
 \pagestyle{headings}
 \usepackage{setspace}
+\usepackage[title]{appendix}
 
 %% Special math fonts and symbols
 \usepackage{amssymb}
@@ -38,6 +39,8 @@
 
 % a todo command
 \newcommand{\todo}[1]{{\color{red}{\textbf{#1}}}}
+\newcommand{\jifs}{\href{https://github.com/jmbhughes/jifs}{jifs}\,}
+\newcommand{\jwalker}{\href{https://github.com/jmbhughes/jWalker}{jWalker}\,}
 
 \usepackage{titling}
 
@@ -49,11 +52,28 @@
 
 \begin{document}
 \maketitle
+
 \section{Introduction}
+Imagine a leaf falling from a tree. It wanders as it falls, ever attracted to the ground by gravity. This simple behavior can be modeled as a three-dimensional random walk with an attracting plane. Numerous physical phenomena can be modeled with random walks of various kinds \todo{enumerate}. These random walks are self-similar \todo{why?} and have various fractal dimensions. 
 
 \section{Background}
+\subsection{Simple random walks}
+Mandelbrot originally studied random walks as fractals.  
+
+\subsection{Fractal dimension}
+The dimension of a geometric object can be interpreted many ways:
+\begin{itemize}
+\item topological dimension
+\item Hausdorff dimension
+\item Minkowski dimension
+\end{itemize}
 
 \section{Code Contribution}
+Since this project was computational, I will briefly outline my original code contributions. I have developed two independent software packages in Java: \jifs and \jwalker. These were kept separate as \jifs is being developed as a portable Java version of \href{https://www.matheasel.com/terafractal/mac/}{TeraFractal}, a beautiful fractal generation tool exclusively for Mac. \jifs provides iterated function systems in Java and measuring the Minkowski dimension while \jwalker handles the random walks portion. This report will be made available with the \jwalker code.
+
+\subsection{\jifs}
+
+\subsection{jWalker}
 
 \section{Experiments}
 
@@ -61,4 +81,13 @@
 
 \bibliographystyle{acm}
 \bibliography{references}
+
+\begin{appendices}
+  \section{Code}
+  \inputminted{java}{../src/Point.java}
+  \inputminted{java}{../src/RandomWalk.java}
+  \inputminted{java}{../src/PlaneAttracted3D.java}
+\end{appendices}
+
+
 \end{document}
