@@ -116,16 +116,19 @@ The walker can only get a few steps off the plane before it is pulled back onto 
 
 My fit line instead had slope of $1.3$. I did not have sufficient time to determine why this was different. 
 
-
 \section{Code Contribution}
 Since this project was computational, I will briefly outline my original code contributions. I have developed two independent software packages in Java: \jifs and \jwalker. These were kept separate as \jifs is being developed as a portable Java version of \href{https://www.matheasel.com/terafractal/mac/}{TeraFractal}, a beautiful fractal generation tool exclusively for Mac. \jifs provides iterated function systems in Java and measuring the Minkowski dimension while \jwalker handles the random walks portion. This report will be made available with the \jwalker code.
 
-\subsection{\jifs}
-
 \subsection{jWalker}
+This package includes the random walk code. It implements a simple arbitrary topological dimension point which is used by a generic random walk class. Then, I have implemented simple random walks as well as a plane attracted random walk. The random walk classes provide measurement tools for their dimensions. 
 
+\subsection{\jifs}
+This package has support for simple iterated function systems of affine transformations. It also supports visualizing them and has the capacity to add other kinds of iterated function systems. It provides support to measure the Minkowski dimension of a set of points. 
 
 \section{Summary}
+Ultimately, I was a bit disappointed with my result. I had planned (and still do) to explore more random walks. For example, I was planning on adding "traps" to the attracing plane where it was difficult to esacpe, or similarly points that pushed away dramatically. I was also planning on exploring it in higher dimensions and also constraining it so the walk could not go below the plane. I sketched out a version where instead of an attracting plane there was an attracting surface. However, I had insufficient time to implement. Another plan was to allow the walk to be attracted to an iterated function system instead of a plane. Thus, it would be offered "neighbors" that were from the IFS as well spatial neighbors. I thought it would be interesting to see the attraction. I had plans to allow for the attraction to depend on the distance from the plane as well, as simple modification (which shouldn't have resulted in much change if you were already on the plane except for an occasional wandering off). 
+
+However, I had very little time with other finals and thesis work (I did apply fractal dimension in it though to find the fractal dimension of active regions on the Sun). I'm attaching an appendix with the code generated for this project (some of it did not get used because I ran out of time). I will return to this project after graduation and update this report with new results as they become available for your reading. 
 
 \newpage
 
@@ -137,6 +140,8 @@ Since this project was computational, I will briefly outline my original code co
 \singlespace
 \begin{appendices}
   \section{Code}
+  I included copies of the code here for your easy of viewing. 
+  
   \subsection{Point}
   \inputminted{java}{../src/Point.java}
 
@@ -154,6 +159,30 @@ Since this project was computational, I will briefly outline my original code co
 
   \subsection{plotFig1}
   \inputminted{python}{../src/plotFig1.py}
+  
+  \subsection{IFS}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/IFS.java}
+  
+  \subsection{AffineTransform}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/AffineTransform.java}
+  
+  \subsection{LinearRegression}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/LinearRegression.java}
+  
+  \subsection{Matrix}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/Matrix.java}
+  
+  \subsection{IFSEvaluator}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/IFSEvaluator.java}
+  
+  \subsection{MinkowskiDimension}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/MinkowskiDimension.java}
+  
+  \subsection{Transform}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/Transform.java}
+  
+  \subsection{RandomIFSEvaluator}
+  \inputminted{java}{/home/marcus/grive/codedungeon/jifs/src/RandomIFSEvaluator.java}
   
 \end{appendices}
 
