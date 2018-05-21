@@ -1,5 +1,6 @@
 import java.util.Vector;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PlaneAttracted3D extends RandomWalk {
 
@@ -91,24 +92,23 @@ public class PlaneAttracted3D extends RandomWalk {
         }
     }
 
-    /** 
-     * Take <code> steps </code> and return the path
-     * @param steps number of movements to make
-     * @return path of random walk
-     */
-    public Vector<Point> walk(int steps) {
-        for (int i = 0; i < steps; i++) {
-            step();
-        }
-        return this.path;
-    }
-
     /** Testing method */
     public static void main(String[] args) {
-        PlaneAttracted3D walk = new PlaneAttracted3D(1.5);
-        Vector<Point> path = walk.walk(100);
-        for(Point p : path) {
-            System.out.println(p);
+        Random rng = new Random();
+        int iterations = Integer.parseInt(args[0]);
+        double alpha   = Double.parseDouble(args[1]);
+        
+        int iMin = 10000;
+        int iMax = 1000000;
+        int length = ThreadLocalRandom.current().nextInt(iMin, iMax);
+
+        PlaneAttracted3D rw;
+        
+        for (int i = 0; i < iterations; i++) {
+            length = ThreadLocalRandom.current().nextInt(iMin, iMax);
+            rw = new PlaneAttracted3D(alpha);
+            rw.walk(length);
+            System.out.printf("%d %f \n", rw.numUnique(),  rw.radiusOfGyration());
         }        
     }
 }

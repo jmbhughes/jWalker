@@ -1,4 +1,7 @@
 import java.util.Vector;
+import java.util.Set;
+import java.util.HashSet;
+import static java.lang.Math.sqrt;
 
 /**
  * A generic representation of a random walk 
@@ -21,11 +24,65 @@ public abstract class RandomWalk {
     /** Take one step, i.e. move one iteration */
     abstract public void step();
 
-    /** Perform a complete walk with the desired number of steps */
-    abstract public Vector<Point> walk(int steps);
+    /** 
+     * Take <code> steps </code> and return the path
+     * @param steps number of movements to make
+     * @return path of random walk
+     */
+    public Vector<Point> walk(int steps) {
+        for (int i = 0; i < steps; i++) {
+            step();
+        }
+        return this.path;
+    }
 
     /** Return path */
     public Vector<Point> getPath() {
         return this.path;
+    }
+
+    /** Number of points in path */
+    public int length() {
+        return this.path.size();
+    }
+
+    /** 
+     * Calculates the center of mass
+     * @throws RuntimeException if the path is empty
+     */
+    public Point centerOfMass() {
+        if (this.length() == 0) {
+            throw new RuntimeException("Path must be populated before calculating");
+        }
+        Vector<Double> point = new Vector<Double>();
+        for (int i = 0; i < this.dimension; i++) {
+            point.addElement(0.0);
+        }
+        Point sum = new Point(point);
+        for (Point p : path) {
+            sum = sum.add(p);
+        }
+        return sum.scale(1.0 / (1.0 + length()));
+    }
+
+    /**
+     * Calculates the radius of gyration
+     * @throws RuntimeException if the path is empty
+     */
+    public double radiusOfGyration() {
+        Point center = centerOfMass();
+        double sum = 0.0;
+        for (Point p : path) {
+            sum += p.subtract(center).square().mean();
+        }
+        return sqrt((1.0 / (length() + 1.0)) * sum);
+    }
+
+    /**
+     * Number of unique points
+     */
+    public int numUnique() {
+        Set<Point> s = new HashSet<Point>(path);
+        return s.size();
     }
 }

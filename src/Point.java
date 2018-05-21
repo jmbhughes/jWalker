@@ -81,6 +81,59 @@ public class Point {
         }
         return new Point(result);
     }
+
+    /**
+     * Scales a point by a scalar double 
+     * @param k number to scale by
+     */
+    public Point scale(double k) {
+        Vector<Double> result = new Vector<Double>();
+        for (int i = 0; i < this.dimension; i++) {
+            result.addElement(this.coord.get(i) * k);
+        }
+        return new Point(result);
+    }
+
+
+    /**
+     * Subtract other point
+     * @param other point to subtract
+     * @throws RuntimeException when points are not of the same dimension
+     * @return this - other
+     */
+    public Point subtract(Point other) {
+        return this.add(other.scale(-1.0));
+    }
+
+    /** 
+     * Multiply points
+     * @param other point to multiple
+     * @throws RuntimeException when points are not of the same dimension
+     * @return this * other
+     */
+    public Point multiply(Point other) {
+        if (other.dimension() != this.dimension()) {
+            throw new RuntimeException("Points must have same dimension to add");
+        }
+        Vector<Double> result = new Vector<Double>();
+        for (int i = 0; i < this.dimension; i++) {
+            result.addElement(this.coord.get(i) * other.coord.get(i));
+        }
+        return new Point(result);
+    }
+
+    /** Squares */
+    public Point square() {
+        return this.multiply(this);
+    }
+
+    public double mean() {
+        double sum = 0.0;
+        for (double v : coord) {
+            sum += v;
+        }
+        return sum / dimension;
+    }
     
     /** testing method */
     public static void main(String[] args) {
